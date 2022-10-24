@@ -1,0 +1,39 @@
+
+<div class="dialog">
+    <div class="d" dir=rtl mat-dialog-content>
+       
+    <mat-form-field appearance="fill"> ת.ז.
+        <input disabled matInput [(ngModel)]="dataAdd.ID"><br>
+    </mat-form-field>
+    <mat-form-field appearance="fill"> שם פרטי ומשפחה
+        <input matInput [(ngModel)]="dataAdd.FirstNameAndLastName"><br>
+    </mat-form-field>
+    <mat-form-field appearance="fill"> כתובת
+        <input matInput [(ngModel)]="dataAdd.Address"><br>
+    </mat-form-field>
+    <mat-form-field appearance="fill"> תאריך לידה
+        <input matInput [(ngModel)]="dataAdd.DateOfBirth"><br>
+    </mat-form-field>
+    <mat-form-field appearance="fill"> טלפון
+        <input matInput [(ngModel)]="dataAdd.Phone"><br>
+    </mat-form-field>
+    <mat-form-field appearance="fill"> טלפון נייד
+        <input matInput [(ngModel)]="dataAdd.MobilePhone"><br>
+    </mat-form-field> 
+    <mat-form-field appearance="fill"> מועד קבלת תוצאה חיובית
+        <input matInput [(ngModel)]="dataAdd.DatePositiveResult"><br>
+    </mat-form-field>
+    <mat-form-field appearance="fill"> מועד החלמה
+        <input matInput [(ngModel)]="dataAdd.DateRecovery"><br>
+    </mat-form-field>
+        
+        
+      
+    </div>
+  
+    <div mat-dialog-actions>
+      <button mat-button (click)= "onNoClick()">ביטול</button>
+      <button mat-button [mat-dialog-close]= "dataAdd" cdkFocusInitial>אישור</button>
+    </div>
+    
+  </div>

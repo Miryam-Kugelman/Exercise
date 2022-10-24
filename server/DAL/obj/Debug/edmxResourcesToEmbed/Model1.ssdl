@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExerciseH2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="FirstNameAndLastName" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="30" />
+    <Property Name="DateOfBirth" Type="date" />
+    <Property Name="Phone" Type="varchar" MaxLength="15" />
+    <Property Name="MobilePhone" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="DatePositiveResult" Type="date" />
+    <Property Name="DateRecovery" Type="date" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Vaccination">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ClientID" Type="varchar" MaxLength="9" Nullable="false" />
+    <Property Name="NumberVaccination" Type="int" Nullable="false" />
+    <Property Name="DateVaccination" Type="date" Nullable="false" />
+    <Property Name="VaccineManufacturer" Type="varchar" MaxLength="15" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Vaccination_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Vaccination" Type="Self.Vaccination" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Vaccination">
+        <PropertyRef Name="ClientID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ExerciseH2ModelStoreContainer">
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vaccination" EntityType="Self.Vaccination" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Vaccination_Client" Association="Self.FK_Vaccination_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Vaccination" EntitySet="Vaccination" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

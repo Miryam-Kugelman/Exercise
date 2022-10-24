@@ -1,0 +1,23 @@
+
+
+<div class="dialog">
+    <div class="d" dir=rtl mat-dialog-content>
+      
+        <mat-form-field appearance="fill"> מס' חיסון
+            <input matInput [(ngModel)]="dataAdd.NumberVaccination"><br>
+        </mat-form-field>
+    <mat-form-field appearance="fill"> תאריך חיסון
+        <input matInput [(ngModel)]="dataAdd.DateVaccination"><br>
+    </mat-form-field>
+    <mat-form-field appearance="fill"> יצרן
+        <input matInput [(ngModel)]="dataAdd.VaccineManufacturer"><br>
+    </mat-form-field>
+</div>
+  
+<div mat-dialog-actions>
+  <button mat-button (click)= "onNoClick()">ביטול</button>
+  <button mat-button [mat-dialog-close]= "dataAdd" cdkFocusInitial>אישור</button>
+</div>
+
+</div>
+    

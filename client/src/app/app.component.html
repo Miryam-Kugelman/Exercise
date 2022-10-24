@@ -1,0 +1,36 @@
+
+
+ <button mat-raised-button (click) = "enterNew()">קליינט חדש</button> <br><br>
+
+<div class="example-container mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+    <!-- id Column -->
+    <ng-container matColumnDef="ID">
+      <th mat-header-cell *matHeaderCellDef> ת.ז. </th>
+      <td mat-cell *matCellDef= "let element"> {{element.ID}} </td>
+    </ng-container>
+
+    <!-- firstName Column -->
+    <ng-container matColumnDef="FirstNameAndLastName">
+      <th mat-header-cell *matHeaderCellDef> שם פרטי ומשפחה </th>
+      <td mat-cell *matCellDef= "let element"> {{element.FirstNameAndLastName}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="button">
+      <th mat-header-cell *matHeaderCellDef>  </th>
+      <td mat-cell *matCellDef= "let element"> 
+        <button mat-raised-button (click) = "openData(element.ID)">פרטים</button>
+        <button mat-raised-button (click) = "openDataVaccinations(element.ID)">פרטי חיסונים</button>
+        <button mat-raised-button (click) = "openDelete(element.ID)">מחיקה</button> 
+        <button mat-raised-button (click) = "openUpdate(element.ID)">עריכה</button>
+        <button mat-raised-button (click) = "openAddVaccinations(element.ID)">הוספת חיסון</button> </td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+  </table>
+</div>
+
